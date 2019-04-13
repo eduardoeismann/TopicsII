@@ -4,9 +4,10 @@
   "description": "This project was create for the discipline of Advanced Topics in Computing II. The project focuses on showing PaaS concepts.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
-  "author": "Eduardo Eisman",
+  "author": "Eduardo Eismann",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.6.1",
