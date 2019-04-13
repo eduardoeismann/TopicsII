@@ -19,8 +19,8 @@ MongoClient.connect( uri, ( err, client ) => {
 });
 
 app.get( '/', ( req, res ) => {
-    console.log( 'Running GET here!' );
     res.render( 'index.ejs' );
+    let cursor = db.collection('data').find();
 });
 
 app.post( '/show', ( req, res ) => {
@@ -30,5 +30,9 @@ app.post( '/show', ( req, res ) => {
         console.log('salvo no banco de dados');
 
         res.redirect('/');
+
+        db.collection('data').find().toArray( ( err, result ) => {
+            console.log( result );
+        });
     });
 });
