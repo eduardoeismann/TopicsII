@@ -1,6 +1,8 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 
+app.use( bodyParser.urlencoded({ extended: true }) );
 app.set( 'view engine', 'ejs' );
 
 app.listen( 3000, function() {
@@ -8,6 +10,11 @@ app.listen( 3000, function() {
 });
 
 app.get( '/', ( req, res ) => {
-    // res.send( 'Que a força esteja com você!' );
+    console.log( 'Running GET here!' );
     res.render( 'index.ejs' );
+});
+
+app.post( '/show', ( req, res ) => {
+    console.log( 'Running POST here!' );
+    console.log( req.body );
 });
