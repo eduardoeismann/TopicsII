@@ -5,7 +5,10 @@ const app = express();
 const MongoClient = require( 'mongodb' ).MongoClient.connect;
 const ObjectId = require( 'mongodb' ).ObjectId;
 
-const uri = "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?retryWrites=true";
+//const uri = "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?retryWrites=true";
+const uri = MongoClient( "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?retryWrites=true", { useNewUrlParser: true } );
+//MongoClient.connect('mongodb://user:password@domain.com:port/dbname', { useNewUrlParser: true });
+
 
 MongoClient.connect( uri, ( err, client ) => {
     if ( err ) return console.log( err );
