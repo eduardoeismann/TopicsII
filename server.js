@@ -2,7 +2,7 @@ const express = require( 'express' );
 const bodyParser = require( 'body-parser' );
 const app = express();
 
-const MongoClient = require( 'mongodb' ).MongoClient;
+const MongoClient = require( 'mongodb' ).MongoClient.connect;
 const ObjectId = require( 'mongodb' ).ObjectId;
 
 const uri = "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?retryWrites=true";
