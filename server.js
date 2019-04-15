@@ -5,6 +5,8 @@ const app = express();
 const MongoClient = require( 'mongodb' ).MongoClient.connect;
 const ObjectId = require( 'mongodb' ).ObjectId;
 
+var db;
+
 const uri = "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?retryWrites=true";
 
 MongoClient.connect(uri,{ useNewUrlParser: true },function(err,client) {
