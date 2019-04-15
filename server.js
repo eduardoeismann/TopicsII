@@ -15,9 +15,12 @@ MongoClient.connect( uri, ( err, client ) => {
 
     db = client.db( 'topicosii' );
 
-    app.listen( 8080, () => {
-        console.log( 'Server running on port 3000' );
-    });
+//    app.listen( 8080, () => {
+//        console.log( 'Server running on port 3000' );
+//    });
+
+    app.listen( process.env.PORT, '0.0.0.0' );
+
 });
 
 app.use( bodyParser.urlencoded( { extended: true } ) );
