@@ -5,34 +5,21 @@ const app = express();
 const MongoClient = require( 'mongodb' ).MongoClient.connect;
 const ObjectId = require( 'mongodb' ).ObjectId;
 
-//const uri = "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?retryWrites=true";
-const uri = MongoClient( "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?retryWrites=true", { useNewUrlParser: true } );
-//MongoClient.connect('mongodb://user:password@domain.com:port/dbname', { useNewUrlParser: true });
+const uri = "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?retryWrites=true";
 
+MongoClient.connect(uri,{ useNewUrlParser: true },function(err,db){
 
-MongoClient.connect( uri, ( err, client ) => {
-    if ( err ) return console.log( err );
+    app.listen( 3000, () => {
+        console.log( 'Server running on port 3000' );
+    });
 
-    db = client.db( 'topicosii' );
-
-//    app.listen( 8080, () => {
-//        console.log( 'Server running on port 3000' );
-//    });
-
-    app.listen( process.env.PORT, '0.0.0.0' );
-
-    const get = async () => {
-        return Promise.reject('Oops!').catch(err => {
-            throw new Error(err);
-        });
-    };
-
-
-
-
-
-
-
+  if(err){
+      console.log(err);
+  }
+  else {
+      console.log('connected to '+ uri);
+      db.close();
+  }
 });
 
 app.use( bodyParser.urlencoded( { extended: true } ) );
