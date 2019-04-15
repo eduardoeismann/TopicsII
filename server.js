@@ -7,19 +7,17 @@ const ObjectId = require( 'mongodb' ).ObjectId;
 
 const uri = "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?retryWrites=true";
 
-MongoClient.connect(uri,{ useNewUrlParser: true },function(err,client){
-
-    db = client.db( 'topicosii' );
+MongoClient.connect(uri,{ useNewUrlParser: true },function(err,client) {
 
     app.listen( 8080, () => {
-        console.log( 'Server running on port 3000' );
+        console.log( 'Server running on port 8080' );
     });
 
     if(err){
         console.log(err);
     } else {
         console.log('connected to '+ uri);
-//      db.close();
+	db = client.db('topicosii');
     }
 });
 
