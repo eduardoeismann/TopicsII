@@ -5,22 +5,16 @@ const app = express();
 const MongoClient = require( 'mongodb' ).MongoClient.connect;
 const ObjectId = require( 'mongodb' ).ObjectId;
 
-var db;
-
 const uri = "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?retryWrites=true";
 
 MongoClient.connect(uri,{ useNewUrlParser: true },function(err,client) {
+    if ( err ) return console.log( err );
+
+    db = client.db( 'topicosii' );
 
     app.listen( 8080, () => {
         console.log( 'Server running on port 8080' );
     });
-
-    if(err){
-        console.log(err);
-    } else {
-        console.log('connected to '+ uri);
-	db = client.db('topicosii');
-    }
 });
 
 app.use( bodyParser.urlencoded( { extended: true } ) );
