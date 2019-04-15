@@ -5,9 +5,6 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://<user>:<password>@topicosii-flrey.mongodb.net/test?retryWrites=true";
 
-app.use( bodyParser.urlencoded({ extended: true }) );
-app.set( 'view engine', 'ejs' );
-
 MongoClient.connect( uri, ( err, client ) => {
     if ( err ) return console.log( err );
 
@@ -18,9 +15,23 @@ MongoClient.connect( uri, ( err, client ) => {
     });
 });
 
+app.use( bodyParser.urlencoded({ extended: true }) );
+app.set( 'view engine', 'ejs' );
+
 app.get( '/', ( req, res ) => {
     res.render( 'index.ejs' );
-    let cursor = db.collection('data').find();
+});
+
+app.get( '/', (req, res) => {
+    var cursor = db.collection('data').find();
+});
+
+app.get('/', ( req, res ) => {
+    db.collection('data').find().toArray( ( err, results ) => {
+        if ( err ) return console.log( err );
+
+        res.render( 'show.ejs', { data: results } );
+    });
 });
 
 app.post( '/show', ( req, res ) => {
@@ -29,10 +40,6 @@ app.post( '/show', ( req, res ) => {
 
         console.log('salvo no banco de dados');
 
-        res.redirect('/');
-
-        db.collection('data').find().toArray( ( err, result ) => {
-            console.log( result );
-        });
+        res.redirect('/show');
     });
 });
