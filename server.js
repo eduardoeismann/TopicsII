@@ -68,6 +68,17 @@ app.route( '/edit/:id' ).get( ( req, res ) => {
         if ( err ) return res.send( err );
 
         res.redirect( '/show' );
-        console.log( 'Dados atualizados!' );
+        console.log( 'Dado atualizado!' );
+    });
+});
+
+app.route( '/delete/:id' ).get( ( req, res ) => {
+    var id = req.params.id;
+
+    db.collection( 'data' ).deleteOne( { _id: ObjectId( id ) }, ( err, result ) => {
+        if ( err ) return res.send( 500, err );
+
+        console.log( 'Dado deletado!' );
+        res.redirect( '/show' );
     });
 });
