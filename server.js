@@ -5,7 +5,7 @@ const app = express();
 const MongoClient = require( 'mongodb' ).MongoClient;
 const ObjectId = require( 'mongodb' ).ObjectId;
 
-const uri = "mongodb+srv://<user>:<password>@topicosii-flrey.mongodb.net/test?retryWrites=true";
+const uri = "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?retryWrites=true";
 
 MongoClient.connect( uri, ( err, client ) => {
     if ( err ) return console.log( err );
@@ -58,6 +58,7 @@ app.route( '/edit/:id' ).get( ( req, res ) => {
     var id = req.params.id;
     var name = req.body.name;
     var surname = req.body.surname;
+    var file = req.body.file;
 
     db.collection( 'data' ).updateOne( {_id: ObjectId( id ) }, {
         $set: {
