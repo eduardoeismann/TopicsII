@@ -21,6 +21,18 @@ MongoClient.connect( uri, ( err, client ) => {
 
     app.listen( process.env.PORT, '0.0.0.0' );
 
+    const get = async () => {
+        return Promise.reject('Oops!').catch(err => {
+            throw new Error(err);
+        });
+    };
+
+
+
+
+
+
+
 });
 
 app.use( bodyParser.urlencoded( { extended: true } ) );
