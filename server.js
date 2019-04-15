@@ -3,6 +3,8 @@ const bodyParser = require( 'body-parser' );
 const app = express();
 
 const MongoClient = require( 'mongodb' ).MongoClient;
+const ObjectId = require( 'mongodb' ).ObjectId;
+
 const uri = "mongodb+srv://<user>:<password>@topicosii-flrey.mongodb.net/test?retryWrites=true";
 
 MongoClient.connect( uri, ( err, client ) => {
@@ -46,7 +48,7 @@ app.post( '/show', ( req, res ) => {
 app.route( '/edit/:id' ).get( ( req, res ) => {
     var id = req.params.id;
 
-    db.connection( 'data' ).find( ObjectId( id ) ).toArray( ( err, result ) => {
+    db.collection( 'data' ).find( ObjectId( id ) ).toArray( ( err, result ) => {
         if ( err ) return res.send( err );
 
         res.render( 'edit.ejs', { data: result } );
