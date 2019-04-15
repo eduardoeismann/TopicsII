@@ -13,6 +13,7 @@
             <tr>
                 <td>Nome</td>
                 <td>Sobrenome</td>
+                <td>Ação</td>
             </tr>
         </thead>
 
@@ -22,11 +23,12 @@
             <tr>
                 <td><%= details.name %></td>
                 <td><%= details.surname %></td>
+                <td><a href="/edit/<%= details._id %>">Editar</a> - <a href="/delete/<%= details._id %>">Deletar</a></td>
             </tr>
 
             <% }) %>
         </tbody>
 
-        <button><a href="/">Voltar</a></button>
+        <button><a href="/">Novo</a></button>
     </body>
 </html>
