@@ -11,6 +11,8 @@ const uri = "mongodb+srv://eduardo:Feevale2019@topicosii-flrey.mongodb.net/test?
 
 MongoClient.connect(uri,{ useNewUrlParser: true },function(err,client) {
 
+    console.log('Hello =) ');
+
     app.listen( 8080, () => {
         console.log( 'Server running on port 8080' );
     });
